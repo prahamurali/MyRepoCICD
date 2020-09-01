@@ -1,0 +1,14 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands:
+      - echo Python 3.8 Installed
+      - aws cloudformation package --template-file template.yaml --s3-bucket samplecicdbucket --s3-prefix mylambdafolder --output-template-file outputTemplate.yaml
+      - echo Cloud Formation completed
+artifacts:
+  type: zip
+  files:
+    - template.yaml
+    - outputTemplate.yaml
